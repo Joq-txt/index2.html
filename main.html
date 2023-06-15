@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+
+body{
+text-align: center;
+}
+
+#footer{
+width: 1000px;
+height: 22px;
+background-color: grey;
+margin: 0px auto;
+display: none;
+}
+
+#header{
+width: 1000px;
+height: 75px;
+background-color: grey;
+margin: 0px auto;
+margin-bottom: 10px;
+display: none;
+}
+
+#lijst{
+list-style: none;
+margin: 0px auto;
+padding-top: 25px;	
+text-align: center;
+display: none;
+}
+
+#lijst li{
+display: inline-block;
+padding: 0px 60px;
+text-decoration: none;
+border-left: 1px solid black;
+}
+
+#lijst li:first-child{
+border-left:none;
+color: red;
+}
+
+#lijst li:first-child:hover{
+color: blue;
+}
+
+#lijst li:hover{
+color: white;
+}
+
+#container{
+width: 1000px; 
+height: 500px;
+background-color: grey;
+margin: 5px auto;
+display: none;
+}
+
+#nav1, #nav2, #nav3, #nav4, #nav5, #nav6{
+width: 325px;
+height: 200px;
+display: none;
+margin-left: 5px;
+margin-top: 5px;
+float: left;
+background-color: white;
+}
+
+#knop1, #knop2{
+display: none;
+text-align: center;
+}
+
+#links, #rechts{
+display: none;
+}
+
+#knopNa{
+display: none;
+}
+
+#knopVoor{
+display: inline-block;
+}
+
+table{
+text-align: center;
+display: inline-block;
+}
+
+</style>
+</head>
+<body>
+
+<script>
+
+function begin(){
+document.getElementById("footer").style.display="block";
+document.getElementById("begin").style.display="none";
+}
+
+function toonHeader() {
+document.getElementById("header").style.display="block";
+}
+
+function vulHeader() {
+document.getElementById("lijst").style.display="block";
+}
+
+function toonContent() {
+document.getElementById("container").style.display="block";	
+}
+
+function vulContent() {
+var woord = prompt("Ben je hier zeker van?").toLowerCase();
+if(woord=="ja"){
+document.getElementById("nav1").style.display="block";
+document.getElementById("nav2").style.display="block";
+document.getElementById("nav3").style.display="block";
+document.getElementById("nav4").style.display="block";
+document.getElementById("nav5").style.display="block";
+document.getElementById("nav6").style.display="block";
+}
+else{
+alert("We zullen toch verder moeten dus je word terug naar de startpagina geleid en probeer opnieuw");
+window.location.reload();
+}
+}
+
+function vergelijk() {
+var eersteWoord = formulier.woord1.value;
+var tweedeWoord = formulier.woord2.value;
+var lengte1 = eersteWoord.length;
+var lengte2 = tweedeWoord.length;
+if(eersteWoord==tweedeWoord){
+document.getElementById("nav6").innerHTML="Het eerste woord "+eersteWoord+" telt "+lengte1+" letters en het tweede woord "+tweedeWoord+" telt "+lengte2+" letters.<br>Bovendien zijn deze woorden hetzelfde";
+}
+else if(lengte1==lengte2){
+document.getElementById("nav6").innerHTML="Het eerste woord "+eersteWoord+" telt "+lengte1+" letters en het tweede woord "+tweedeWoord+" telt "+lengte2+" letters.<br>De woorden zijn dus even lang";
+}
+else{
+document.getElementById("nav6").innerHTML="Het eerste woord "+eersteWoord+" telt "+lengte1+" letters en het tweede woord "+tweedeWoord+" telt "+lengte2+" letters.<br>Dit zijn dus 2 totaal verschillende woorden";
+}
+document.getElementById("knop1").style.display="inline-block";
+}
+
+function volgendeOpdracht(){
+var voornaam = prompt("Geef je voornaam");
+var kleur = prompt("Kies de kleur geel of groen","Geel of Groen").toLowerCase();
+if(kleur=="geel"){
+document.getElementById("nav2").style.backgroundColor="yellow";
+document.getElementById("nav2").style.color="red";
+document.getElementById("nav2").innerHTML="Welkom "+voornaam+"<br>Als je hier bent geraakt heb je al een aantal punten verdiend. Je hebt net ook de achtergrondkleur gekozen en je ziet dat er onderaan een nieuwe knop is gekomen voor het laatste onderdeel in te gaan";
+document.getElementById("knop1").style.display="none";
+document.getElementById("knop2").style.display="inline-block";
+}
+else if(kleur=="groen"){
+document.getElementById("nav2").style.backgroundColor="green";
+document.getElementById("nav2").innerHTML="Welkom "+voornaam+"<br>Als je hier bent geraakt heb je al een aantal punten verdiend. Je hebt net ook de achtergrondkleur gekozen en je ziet dat er onderaan een nieuwe knop is gekomen voor het laatste onderdeel in te gaan";
+document.getElementById("knop1").style.display="none";
+document.getElementById("knop2").style.display="inline-block";
+}
+else{
+document.getElementById("nav2").style.backgroundColor="white";
+document.getElementById("nav2").innerHTML=voornaam+", ik heb je toch duidelijk gezegd dat je geel of groen moest kiezen. Druk nu op de knop voor opnieuw te proberen";
+document.getElementById("knop1").innerHTML="Probeer opnieuw";
+}
+}
+
+function laatsteOpdracht() {
+document.getElementById("nav2").innerHTML="";
+document.getElementById("nav2").style.backgroundColor="white";
+document.getElementById("nav6").innerHTML="";
+document.getElementById("links").style.display="block";
+document.getElementById("rechts").style.display="block";
+}
+
+var namen = new Array("Chaybon", "Ivo", "Femke");
+var logins = new Array("Verlooy", "Goyens","Eggermont");
+var wachtwoorden = new Array("cv1","ig1","fe1");
+
+function verzend() {
+var naam = formulier2.naam.value;
+var login = formulier2.login.value;
+var ww1 = formulier2.wachtwoord1.value;
+var ww2 = formulier2.wachtwoord2.value;
+if(naam==""){
+document.getElementById("nav4").innerHTML="Gelieve een naam in te geven";
+}
+else if(login==""){
+document.getElementById("nav4").innerHTML="Gelieve een login in te geven";
+}
+else if(ww1==""){
+document.getElementById("nav4").innerHTML="Gelieve een wachtwoord in te geven";
+}
+else if(ww2==""){
+document.getElementById("nav4").innerHTML="Gelieve het wachtwoord te herhalen";
+}
+else if(ww1!=ww2){
+document.getElementById("nav4").innerHTML="Je wachtwoorden komen niet overeen, schrijf dus hetzelfde wachtwoord";
+}
+else{
+document.getElementById("knopVoor").style.display="none";
+document.getElementById("knopNa").style.display="inline-block";
+namen.push(naam);
+logins.push(login);
+wachtwoorden.push(ww1);
+document.getElementById("nav4").innerHTML="Je hebt volgende gegevens ingegeven<br>Naam: "+naam+"<br>Login: "+login+"<br>Wachtwoord: "+ww1;
+}
+}
+
+function test() {
+document.getElementById("knopNa").style.display="none";
+var noteren="";
+for(i=0;i<namen.length;i++){
+noteren+="<tr><td>"+namen[i]+"</td><td>"+logins[i]+"</td><td>"+wachtwoorden[i]+"</td></tr>";
+}	
+document.getElementById("nav5").innerHTML="<br>Je hebt volgende klanten in je bestanden:<br><table border=1><tr>"+"<td>Naam:</td>"+"<td>Login:</td>"+"<td>Passwords:</td></tr>"+noteren+"</table>";
+}
+
+</script>
+
+<div id="header">
+<ul id="lijst">
+<li>Eten</li>
+<li>Drinken</li>
+<li>Computers</li>
+<li>Telefoons</li>
+<li>TV</li>
+</ul>
+</div>
+
+<div id="container">
+
+<div id="nav1"></div>
+<div id="nav2"></div>
+<div id="nav3"></div>
+<div id="nav4">
+<div id="links">
+<form name="formulier2">
+<fieldset>
+<legend>Registreer</legend>
+<table>
+<tr>
+<td>Naam:</td>
+<td><input type="text" name="naam"></input></td>
+</tr>
+<tr>
+<td>Login:</td>
+<td><input type="text" name="login"></input></td>
+</tr>
+<tr>
+<td>Wachtwoord:</td>
+<td><input type="text" name="wachtwoord1"></input></td>
+</tr>
+<tr>
+<td>Herhaal wachtwoord:</td>
+<td><input type="text" name="wachtwoord2"></input></td>
+</tr>
+<tr>
+<td><button type="submit" onclick="verzend()">Verzend</button></td>
+<td><button type="reset">Reset</button></td>
+</tr>
+</table>
+</fieldset>
+</form>
+</div>
+</div>
+<div id="nav5">
+<div id="rechts">
+<h3>Een lijst met klanten</h3>
+<button type="button" onclick="test()" id="knopVoor">Lijst opvragen voor de registratie</button>
+<button type="button" onclick="test()" id="knopNa">Lijst opvragen na de registratie</button>
+</div>
+</div>
+
+<div id="nav6">
+<form name="formulier">
+<fieldset>
+<legend>Vergelijk</legend>
+<table>
+<tr>
+<td>Woord 1:</td>
+<td> <input type="text" name="woord1"></td>
+</tr>
+<tr>
+<td> Woord 2:</td>
+<td> <input type="text" name="woord2"> </td>
+</tr>
+<tr>
+<td><button type="submit" onclick="vergelijk()">Vergelijk</button></td>
+<td><button type="reset">Reset</button></td>
+</tr>
+</table>
+</fieldset>
+</form>
+</div>
+
+</div>
+
+<div id="footer">
+<button onclick="toonHeader()">Toon header</button>
+<button onclick="vulHeader()">Vul header</button>
+<button onclick="toonContent()">Toon content</button>
+<button onclick="vulContent()">Vul content</button>
+<button type="button" onclick="volgendeOpdracht()" id="knop1">Volgende opdracht</button>
+<button type="button" onclick="laatsteOpdracht()" id="knop2">Laatste opdracht</button>
+</div>
+
+<div id="begin">
+<h3>Test examen Juni Chaybon Verlooy</h3>
+<button onclick="begin()">Begin eraan</button>
+</div>
+
+</body>
+</html>
